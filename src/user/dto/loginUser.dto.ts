@@ -1,4 +1,4 @@
 export class loginUsers{
-    correo: string
-    contraseña: string
+    email: string
+    password: string
 }

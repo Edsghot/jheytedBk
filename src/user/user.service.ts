@@ -19,10 +19,10 @@ export class UserService {
     }
 
     async loginUser(user: loginUsers) {
-        const { correo, contraseña } = user;
+        const { email, password } = user;
       
         const existingUser = await this.userRepository.findOne({
-          where: { correo, contraseña }
+          where: { email, password }
         });
       
         if (existingUser) {

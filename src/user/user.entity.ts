@@ -1,28 +1,37 @@
 import { Entity , Column, PrimaryGeneratedColumn} from "typeorm"
 
-export enum rolUser{
-    admin = 'ADMINISTRADOR',
-    user = 'USUARIO',
-    proveedor = 'PROVEEDOR'
+export enum UserRole {
+    admin = 'ADMINISTRATOR',
+    user = 'USER',
+    supplier = 'SUPPLIER'
 }
-@Entity({name: 'users'})
-export class User{
+
+@Entity({ name: 'users' })
+export class User {
     @PrimaryGeneratedColumn()
-    idUsuario: number
-    @Column({unique: true})
-    correo: string
+    idUser: number;
+    
+    @Column({ unique: true })
+    email: string;
+    
     @Column()
-    contraseña: string
+    password: string;
+    
     @Column()
-    nombre: string
+    firstName: string;
+    
     @Column()
-    apellidos: string
+    lastName: string;
+    
     @Column()
-    edad: number
+    age: number;
+    
     @Column()
-    rol: rolUser
+    role: UserRole;
+    
     @Column()
-    puntos: number
-    @Column({nullable: true})
-    profileImg: string
+    points: number;
+    
+    @Column({ nullable: true })
+    profileImage: string;
 }
