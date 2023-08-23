@@ -1,9 +1,9 @@
 import { Entity , Column, PrimaryGeneratedColumn} from "typeorm"
 
-enum rolUser{
-    admin = 'ADMIN',
-    user = '',
-    proveedor = ''
+export enum rolUser{
+    admin = 'ADMINISTRADOR',
+    user = 'USUARIO',
+    proveedor = 'PROVEEDOR'
 }
 @Entity({name: 'users'})
 export class User{
@@ -18,11 +18,11 @@ export class User{
     @Column()
     apellidos: string
     @Column()
-    edad: string
+    edad: number
     @Column()
     rol: rolUser
     @Column()
-    puntos: string
+    puntos: number
     @Column({nullable: true})
     profileImg: string
 }
