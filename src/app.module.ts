@@ -1,6 +1,11 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import {TypeOrmModule} from '@nestjs/typeorm'
+import { ProductsModule } from './products/products.module';
+import { ProductSupplierModule } from './product-supplier/product-supplier.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { CartModule } from './cart/cart.module';
+import { CartItemsModule } from './cart-items/cart-items.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -13,7 +18,7 @@ import {TypeOrmModule} from '@nestjs/typeorm'
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
 
-  }), UserModule],
+  }), UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule],
   controllers: [],
   providers: [],
 })
