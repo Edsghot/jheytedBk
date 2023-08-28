@@ -1,11 +1,5 @@
 import { Entity , Column, PrimaryGeneratedColumn, Double} from "typeorm"
 
-export enum ShoppingStatus {
-    PROCESSING = 'PROCESSING',
-    PAID = 'PAID',
-    REVIEW = 'REVIEW',
-}
-
 @Entity({ name: 'ShoppingCart' })
 export class ShoppingCart {
     @PrimaryGeneratedColumn()
@@ -24,5 +18,5 @@ export class ShoppingCart {
     voucherImage: string;
     
     @Column()
-    status: ShoppingCart;
+    status: number;
 }

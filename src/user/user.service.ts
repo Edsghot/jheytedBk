@@ -18,6 +18,13 @@ export class UserService {
         return this.userRepository.save(newUser)
     }
 
+    getbyId(idUser: number){
+      return this.userRepository.findOne({
+          where: { idUser:idUser}
+        });
+      
+    }
+
     async loginUser(user: loginUsers) {
         const { email, password } = user;
       
