@@ -1,6 +1,5 @@
-import { UserRole } from "../user.entity"
-
-export class createUserDto{
+import { UserRole } from "../user.entity";
+export declare class createUserDto {
     email: string;
     password: string;
     firstName: string;
@@ -9,5 +8,4 @@ export class createUserDto{
     role: UserRole;
     points: number;
     profileImg: string;
-
 }

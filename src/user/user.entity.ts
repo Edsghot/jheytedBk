@@ -24,7 +24,7 @@ export class User {
     lastName: string;
     
     @Column()
-    age: number;
+    birthDate: Date;
     
     @Column()
     role: UserRole;
