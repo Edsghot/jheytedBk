@@ -52,7 +52,7 @@ __decorate([
     __metadata("design:type", Number)
 ], User.prototype, "points", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], User.prototype, "profileImage", void 0);
 exports.User = User = __decorate([

@@ -32,6 +32,6 @@ export class User {
     @Column()
     points: number;
     
-    @Column({ nullable: true })
+    @Column()
     profileImage: string;
 }
