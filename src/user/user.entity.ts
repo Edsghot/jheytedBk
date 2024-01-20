@@ -34,4 +34,11 @@ export class User {
     
     @Column()
     profileImage: string;
+    
+    @Column()
+    idGoogle: string;
+
+    
+    @Column()
+    idFacebook: string;
 }

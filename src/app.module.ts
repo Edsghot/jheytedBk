@@ -6,6 +6,8 @@ import { ProductSupplierModule } from './product-supplier/product-supplier.modul
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { CartModule } from './cart/cart.module';
 import { CartItemsModule } from './cart-items/cart-items.module';
+import { AuthServiceModule } from './auth-login/auth-service.module';
+import { GoogleStrategy } from './auth-login/google.strategy';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -18,7 +20,7 @@ import { CartItemsModule } from './cart-items/cart-items.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
 
-  }), UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule],
+  }), UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule, AuthServiceModule],
   controllers: [],
   providers: [],
 })

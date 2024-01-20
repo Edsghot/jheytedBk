@@ -13,4 +13,6 @@ export declare class User {
     role: UserRole;
     points: number;
     profileImage: string;
+    idGoogle: string;
+    idFacebook: string;
 }
