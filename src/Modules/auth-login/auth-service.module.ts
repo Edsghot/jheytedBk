@@ -4,7 +4,7 @@ import { AuthServiceController } from './auth-service.controller';
 import { GoogleStrategy } from './google.strategy';
 import { FacebookStrategy } from './facebook.strategy';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from '../user/user.entity';
+import { User } from '../../ENTITY/User/user.entity';
 
 @Module({
 imports: [TypeOrmModule.forFeature([User])],

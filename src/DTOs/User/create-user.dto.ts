@@ -1,12 +1,12 @@
-import { UserRole } from "../../Modules/user/user.entity"
+import { UserRole } from "../../ENTITY/User/user.entity"
 
 export class createUserDto{
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    age: Date;
-    role: UserRole;
+    Email: string;
+    Password: string;
+    FirstName: string;
+    LastName: string;
+    Age: Date;
+    Role: UserRole;
     points: number;
     profileImg: string;
 

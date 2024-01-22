@@ -7,38 +7,40 @@ export enum UserRole {
 }
 
 @Entity({ name: 'users' })
-export class User {
+export class UserEntity {
     @PrimaryGeneratedColumn()
-    idUser: number;
+    IdUser: number;
     
     @Column({ unique: true })
-    email: string;
+    Email: string;
     
     @Column()
-    password: string;
+    Password: string;
     
     @Column()
-    firstName: string;
+    FirstName: string;
     
     @Column()
-    lastName: string;
+    LastName: string;
     
     @Column()
-    birthDate: Date;
+    BirthDate: Date;
     
     @Column()
-    role: UserRole;
+    Role: UserRole;
     
     @Column()
-    points: number;
-    
-    @Column()
-    profileImage: string;
-    
-    @Column()
-    idGoogle: string;
+    Points: number;
 
+    @Column()
+    Phone: string;
     
     @Column()
-    idFacebook: string;
+    ProfileImage: string;
+    
+    @Column()
+    IdGoogle: string;
+
+    @Column()
+    IdFacebook: string;
 }
