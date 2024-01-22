@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './user/user.module';
-import {TypeOrmModule} from '@nestjs/typeorm'
-import { ProductsModule } from './products/products.module';
-import { ProductSupplierModule } from './product-supplier/product-supplier.module';
-import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
-import { CartModule } from './cart/cart.module';
-import { CartItemsModule } from './cart-items/cart-items.module';
-import { AuthServiceModule } from './auth-login/auth-service.module';
-import { GoogleStrategy } from './auth-login/google.strategy';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './Modules/user/user.module';
+import { ProductsModule } from './Modules/products/products.module';
+import { ProductSupplierModule } from './Modules/product-supplier/product-supplier.module';
+import { ShoppingCartModule } from './Modules/shopping-cart/shopping-cart.module';
+import { CartModule } from './Modules/cart/cart.module';
+import { CartItemsModule } from './Modules/cart-items/cart-items.module';
+import { AuthServiceModule } from './Modules/auth-login/auth-service.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -19,7 +18,6 @@ import { GoogleStrategy } from './auth-login/google.strategy';
       database: 'nibcqvah_Jheyted',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
-
   }), UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule, AuthServiceModule],
   controllers: [],
   providers: [],

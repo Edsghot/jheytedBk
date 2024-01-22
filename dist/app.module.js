@@ -8,14 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const user_module_1 = require("./user/user.module");
 const typeorm_1 = require("@nestjs/typeorm");
-const products_module_1 = require("./products/products.module");
-const product_supplier_module_1 = require("./product-supplier/product-supplier.module");
-const shopping_cart_module_1 = require("./shopping-cart/shopping-cart.module");
-const cart_module_1 = require("./cart/cart.module");
-const cart_items_module_1 = require("./cart-items/cart-items.module");
-const auth_service_module_1 = require("./auth-login/auth-service.module");
+const user_module_1 = require("./Modules/user/user.module");
+const products_module_1 = require("./Modules/products/products.module");
+const product_supplier_module_1 = require("./Modules/product-supplier/product-supplier.module");
+const shopping_cart_module_1 = require("./Modules/shopping-cart/shopping-cart.module");
+const cart_module_1 = require("./Modules/cart/cart.module");
+const cart_items_module_1 = require("./Modules/cart-items/cart-items.module");
+const auth_service_module_1 = require("./Modules/auth-login/auth-service.module");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
