@@ -1,25 +1,45 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
+export enum CategoryEnum{
+    normal = 0,
+    MasVendido = 1,
+    Recomendado = 2,
+}
+
+
 @Entity({ name: 'ProductSupplier' })
 export class ProductSupplier {
     @PrimaryGeneratedColumn()
-    idProductSupplier: number;
+    IdProductSupplier: number;
     
     @Column({ type: 'double' })
-    priceProduct: number;
+    PriceProduct: number;
 
     @Column()
-    product_id: number;
+    IdProduct: number;
     
     @Column()
-    supplier_id: number;
+    IdSupplier: number;
     
     @Column()
-    imgProduct: string;
+    ImgProduct: string;
     
     @Column({nullable: true})
-    isPromotion: boolean;
+    IsPromotion: boolean;
     
     @Column({ type: 'double',nullable: true })
-    promotionPrice: number;
+    PromotionPrice: number;
+
+    @Column()
+    Score: number;
+
+    @Column()
+    Stock: number;
+    
+    @Column()
+    DateAdded: Date;
+
+    @Column({nullable: true})
+    Category: CategoryEnum;
+
 }

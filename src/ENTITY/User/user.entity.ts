@@ -6,7 +6,7 @@ export enum UserRole {
     supplier = 'SUPPLIER'
 }
 
-@Entity({ name: 'users' })
+@Entity({ name: 'Users' })
 export class UserEntity {
     @PrimaryGeneratedColumn()
     IdUser: number;
