@@ -18,11 +18,11 @@ let AuthValidateService = exports.AuthValidateService = class AuthValidateServic
     }
     sendMail() {
         this.mailerService.sendMail({
-            to: 'ledgoy0321@gmail.com',
+            to: 'jhair2003unamba@gmail.com',
             from: 'edsghot@gmail.com',
-            subject: 'Probando la validacion',
+            subject: 'Por favor verifique su dirección de correo electrónico',
             text: 'welcomee Ed',
-            html: '<b>departe de Ed</b>',
+            html: '<p style="border: 1px solid #ccc; padding: 10px;">Hola, Jhair. <br> <br> A continuación, le enviamos su código de verificación de correo electrónico: <br><br><strong>987521</strong> <br></p>',
         });
     }
 };
