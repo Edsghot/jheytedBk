@@ -11,27 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthValidateSmsService = void 0;
 const common_1 = require("@nestjs/common");
-const twilio_1 = require("twilio");
+const twilio_service_1 = require("nestjs-twilio/dist/module/twilio.service");
 let AuthValidateSmsService = exports.AuthValidateSmsService = class AuthValidateSmsService {
-    constructor() {
-        this.twilioClient = (0, twilio_1.default)('ACa9c24fdab76555907f88cc241b9a06e5', '4187a59d8d22811c2ea726c0bea005e0');
+    constructor(twilioService) {
+        this.twilioService = twilioService;
     }
-    async sendVerificationCode(phoneNumber, code) {
+    async sendSMS() {
         try {
-            await this.twilioClient.messages.create({
-                body: `Tu código de verificación es: ${code}`,
-                from: 'TU_NUMERO_TWILIO',
-                to: phoneNumber,
+            return await this.twilioService.client.messages.create({
+                body: 'SMS Body, sent to the phone!',
+                from: '926706376',
+                to: '926706376',
             });
         }
-        catch (error) {
-            console.error(error.message);
-            throw new Error('Error al enviar el código de verificación por SMS');
+        catch (e) {
+            return {
+                mes: e.message,
+                mess: e
+            };
         }
     }
 };
 exports.AuthValidateSmsService = AuthValidateSmsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [twilio_service_1.TwilioService])
 ], AuthValidateSmsService);
 //# sourceMappingURL=auth-validate-sms.service.js.map

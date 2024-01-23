@@ -8,34 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthValidateSmsController = void 0;
 const common_1 = require("@nestjs/common");
 const auth_validate_sms_service_1 = require("./auth-validate-sms.service");
 let AuthValidateSmsController = exports.AuthValidateSmsController = class AuthValidateSmsController {
-    constructor(smsService) {
-        this.smsService = smsService;
+    constructor(authService) {
+        this.authService = authService;
     }
-    async sendVerificationCode(body) {
-        try {
-            await this.smsService.sendVerificationCode(body.phoneNumber, body.code);
-            return 'SMS sent successfully';
-        }
-        catch (error) {
-            throw new common_1.HttpException('Failed to send SMS', common_1.HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    async sendMail() {
+        return await this.authService.sendSMS();
     }
 };
 __decorate([
-    (0, common_1.Post)('sendVerificationCode'),
-    __param(0, (0, common_1.Body)()),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], AuthValidateSmsController.prototype, "sendVerificationCode", null);
+], AuthValidateSmsController.prototype, "sendMail", null);
 exports.AuthValidateSmsController = AuthValidateSmsController = __decorate([
     (0, common_1.Controller)('authSms'),
     __metadata("design:paramtypes", [auth_validate_sms_service_1.AuthValidateSmsService])
