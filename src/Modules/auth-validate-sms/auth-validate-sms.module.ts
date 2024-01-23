@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AuthValidateSmsService } from './auth-validate-sms.service';
 import { AuthValidateSmsController } from './auth-validate-sms.controller';
-import { TwilioModule } from 'nestjs-twilio';
+import { TwilioModule, TwilioService } from 'nestjs-twilio';
 
 @Module({
   imports: [

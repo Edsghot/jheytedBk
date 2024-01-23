@@ -8,7 +8,7 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class AuthValidateService {
-    constructor(private readonly mailerService: MailerService,@InjectRepository(ValidateEmailSmsEntity) private validateRepository: Repository<ValidateEmailSmsEntity>, private resMessage:ResMessage ){
+    constructor(private readonly mailerService: MailerService,@InjectRepository(ValidateEmailSmsEntity) private validateRepository: Repository<ValidateEmailSmsEntity>){
               
     }
 
