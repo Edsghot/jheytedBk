@@ -16,6 +16,7 @@ exports.AuthValidateService = void 0;
 const mailer_1 = require("@nestjs-modules/mailer");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const RespMessage_dto_1 = require("../../DTOs/Message/RespMessage.dto");
 const ValidateEmailSms_entity_1 = require("../../ENTITY/AuthEntity/ValidateEmailSms.entity");
 const typeorm_2 = require("typeorm");
 let AuthValidateService = exports.AuthValidateService = class AuthValidateService {
@@ -24,7 +25,14 @@ let AuthValidateService = exports.AuthValidateService = class AuthValidateServic
         this.validateRepository = validateRepository;
     }
     async sendMail(email) {
+        var res = new RespMessage_dto_1.ResMessage();
         const code = '789456';
+        var existing = await this.validateRepository.findOne({
+            where: { Email: email }
+        });
+        if (existing != null) {
+            await this.validateRepository.delete(existing);
+        }
         var nuevo = new ValidateEmailSms_entity_1.ValidateEmailSmsEntity();
         nuevo.Email = email;
         nuevo.Code = code;
@@ -37,8 +45,7 @@ let AuthValidateService = exports.AuthValidateService = class AuthValidateServic
             text: 'welcomee Dizzgo',
             html: `<p style="border: 1px solid #ccc; padding: 10px;">Hola, ${email}. <br> <br> A continuación, le enviamos su código de verificación de correo electrónico: <br><br><strong>${code}</strong> <br></p>`,
         });
-        this.resMessage.Message = 'Se envio correctament';
-        this.resMessage.Success = true;
+        return res.resultOK("Se envio correctamente");
     }
 };
 exports.AuthValidateService = AuthValidateService = __decorate([

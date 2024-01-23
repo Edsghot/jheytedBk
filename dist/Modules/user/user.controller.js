@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const create_user_dto_1 = require("../../DTOs/User/create-user.dto");
 const user_service_1 = require("./user.service");
 const loginUser_dto_1 = require("../../DTOs/User/loginUser.dto");
+const validateEmail_dto_1 = require("../../DTOs/ValidateEmail/validateEmail.dto");
 let UserController = exports.UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -32,6 +33,10 @@ let UserController = exports.UserController = class UserController {
     }
     async loginUser(loginUser) {
         return await this.userService.loginUser(loginUser);
+    }
+    async validateCode(data) {
+        var res = await this.userService.validateCode(data);
+        return res;
     }
 };
 __decorate([
@@ -61,6 +66,13 @@ __decorate([
     __metadata("design:paramtypes", [loginUser_dto_1.loginUsers]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "loginUser", null);
+__decorate([
+    (0, common_1.Post)('validate'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [validateEmail_dto_1.ValidateEmailDto]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "validateCode", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UserService])

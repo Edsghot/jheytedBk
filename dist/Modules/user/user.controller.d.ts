@@ -1,6 +1,7 @@
 import { createUserDto } from '../../DTOs/User/create-user.dto';
 import { UserService } from './user.service';
 import { loginUsers } from '../../DTOs/User/loginUser.dto';
+import { ValidateEmailDto } from 'src/DTOs/ValidateEmail/validateEmail.dto';
 export declare class UserController {
     private userService;
     constructor(userService: UserService);
@@ -10,4 +11,5 @@ export declare class UserController {
     loginUser(loginUser: loginUsers): Promise<import("../../ENTITY/User/user.entity").UserEntity | {
         msg: string;
     }>;
+    validateCode(data: ValidateEmailDto): Promise<void>;
 }

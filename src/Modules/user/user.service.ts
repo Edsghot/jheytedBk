@@ -4,12 +4,15 @@ import {UserEntity} from '../../ENTITY/User/user.entity'
 import { Repository } from 'typeorm';
 import {createUserDto} from '../../DTOs/User/create-user.dto'
 import { loginUsers } from '../../DTOs/User/loginUser.dto';
+import { ValidateEmailDto } from 'src/DTOs/ValidateEmail/validateEmail.dto';
+import { ResMessage } from 'src/DTOs/Message/RespMessage.dto';
+import { ValidateEmailSmsEntity } from 'src/ENTITY/AuthEntity/ValidateEmailSms.entity';
 
 
 @Injectable()
 export class UserService {
 
-    constructor(@InjectRepository(UserEntity) private userRepository: Repository<UserEntity>){}
+    constructor(@InjectRepository(UserEntity) private userRepository: Repository<UserEntity>,@InjectRepository(ValidateEmailSmsEntity) private validateRepository: Repository<ValidateEmailSmsEntity>){}
 
     
     createUser(user: createUserDto){
@@ -43,4 +46,23 @@ export class UserService {
     }
     deleteUser(){}
     updateUser(){}
+
+    async validateCode(data: ValidateEmailDto) {
+      var res = new ResMessage();
+      const { Email, Code } = data;
+    
+      var existing = await this.validateRepository.findOne({
+        where: { Email }
+      })
+    
+      if (existing === null) {
+        return res.resultFail("Error al validar código");  // Corregir aquí
+      }
+    
+      if (existing.Code === Code) {
+        return res.resultOK("Está Correcto");
+      }
+    
+      return res.resultFail("Error al validar código");
+    }
 }

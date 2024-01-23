@@ -3,4 +3,6 @@ export declare class ResMessage {
     Value: object;
     Success: boolean;
     Error?: string;
+    resultOK(msg: string): void;
+    resultFail(msg: string): void;
 }

@@ -17,9 +17,12 @@ const common_1 = require("@nestjs/common");
 const dist_1 = require("@nestjs/typeorm/dist");
 const user_entity_1 = require("../../ENTITY/User/user.entity");
 const typeorm_1 = require("typeorm");
+const RespMessage_dto_1 = require("../../DTOs/Message/RespMessage.dto");
+const ValidateEmailSms_entity_1 = require("../../ENTITY/AuthEntity/ValidateEmailSms.entity");
 let UserService = exports.UserService = class UserService {
-    constructor(userRepository) {
+    constructor(userRepository, validateRepository) {
         this.userRepository = userRepository;
+        this.validateRepository = validateRepository;
     }
     createUser(user) {
         const newUser = this.userRepository.create(user);
@@ -47,10 +50,25 @@ let UserService = exports.UserService = class UserService {
     }
     deleteUser() { }
     updateUser() { }
+    async validateCode(data) {
+        var res = new RespMessage_dto_1.ResMessage();
+        const { Email, Code } = data;
+        var existing = await this.validateRepository.findOne({
+            where: { Email }
+        });
+        if (existing === null) {
+            return res.resultFail("Error al validar código");
+        }
+        if (existing.Code === Code) {
+            return res.resultOK("Está Correcto");
+        }
+        return res.resultFail("Error al validar código");
+    }
 };
 exports.UserService = UserService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, dist_1.InjectRepository)(user_entity_1.UserEntity)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __param(1, (0, dist_1.InjectRepository)(ValidateEmailSms_entity_1.ValidateEmailSmsEntity)),
+    __metadata("design:paramtypes", [typeorm_1.Repository, typeorm_1.Repository])
 ], UserService);
 //# sourceMappingURL=user.service.js.map

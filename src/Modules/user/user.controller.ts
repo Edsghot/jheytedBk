@@ -2,6 +2,7 @@ import { Controller,Get, Post,Body, Param } from '@nestjs/common';
 import { createUserDto } from '../../DTOs/User/create-user.dto';
 import { UserService } from './user.service';
 import { loginUsers } from '../../DTOs/User/loginUser.dto';
+import { ValidateEmailDto } from 'src/DTOs/ValidateEmail/validateEmail.dto';
 
 @Controller('user')
 export class UserController {
@@ -25,4 +26,11 @@ export class UserController {
     async loginUser(@Body() loginUser: loginUsers) {
       return await this.userService.loginUser(loginUser);
     }
+
+    @Post('validate')
+     async validateCode(@Body() data: ValidateEmailDto){
+        var res = await this.userService.validateCode(data);
+        return res;
+      }
 }
+ 
