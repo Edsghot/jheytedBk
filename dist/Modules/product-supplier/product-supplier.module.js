@@ -16,7 +16,7 @@ let ProductSupplierModule = exports.ProductSupplierModule = class ProductSupplie
 };
 exports.ProductSupplierModule = ProductSupplierModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([productSupplier_entity_1.ProductSupplier])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([productSupplier_entity_1.ProductSupplierEntity])],
         controllers: [product_supplier_controller_1.ProductSupplierController],
         providers: [product_supplier_service_1.ProductSupplierService]
     })

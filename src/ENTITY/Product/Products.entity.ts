@@ -9,9 +9,9 @@ export enum TypeEnum {
 }
 
 export enum ContainerTypeEnum{
-    Enlatadas = 0,
-    Descartable = 1,
-    Vidrio = 2
+    Canned = 0,
+    Disposable = 1,
+    Glass = 2
 }
 
 @Entity({ name: 'Products' })

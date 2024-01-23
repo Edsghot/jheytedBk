@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = exports.UserRole = void 0;
+exports.UserEntity = exports.UserRole = void 0;
 const typeorm_1 = require("typeorm");
 var UserRole;
 (function (UserRole) {
@@ -17,53 +17,61 @@ var UserRole;
     UserRole["user"] = "USER";
     UserRole["supplier"] = "SUPPLIER";
 })(UserRole || (exports.UserRole = UserRole = {}));
-let User = exports.User = class User {
+let UserEntity = exports.UserEntity = class UserEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], User.prototype, "idUser", void 0);
+], UserEntity.prototype, "IdUser", void 0);
 __decorate([
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], UserEntity.prototype, "Email", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "password", void 0);
+], UserEntity.prototype, "Password", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "firstName", void 0);
+], UserEntity.prototype, "FirstName", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "lastName", void 0);
+], UserEntity.prototype, "LastName", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Date)
-], User.prototype, "birthDate", void 0);
+], UserEntity.prototype, "BirthDate", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "role", void 0);
+], UserEntity.prototype, "Role", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], User.prototype, "points", void 0);
+], UserEntity.prototype, "Points", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "profileImage", void 0);
+], UserEntity.prototype, "Phone", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "idGoogle", void 0);
+], UserEntity.prototype, "ProfileImage", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "idFacebook", void 0);
-exports.User = User = __decorate([
-    (0, typeorm_1.Entity)({ name: 'users' })
-], User);
+], UserEntity.prototype, "VerificationCode", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], UserEntity.prototype, "IdGoogle", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], UserEntity.prototype, "IdFacebook", void 0);
+exports.UserEntity = UserEntity = __decorate([
+    (0, typeorm_1.Entity)({ name: 'Users' })
+], UserEntity);
 //# sourceMappingURL=user.entity.js.map

@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({ name: 'Suppliers' })
-export class UserEntity {
+export class SupplierEntity {
     @PrimaryGeneratedColumn()
     IdSupplier: number;
     

@@ -13,6 +13,6 @@ export class ProductSupplierController {
 
     @Post('insert')
     createUser(@Body() newProduct: createProductSupplier){
-        return this.ProductService.createProductSupplier(newProduct);
+        //return this.ProductService.createProductSupplier(newProduct);
     }
 }

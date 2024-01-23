@@ -38,6 +38,6 @@ __decorate([
     __metadata("design:type", Number)
 ], ShoppingCart.prototype, "status", void 0);
 exports.ShoppingCart = ShoppingCart = __decorate([
-    (0, typeorm_1.Entity)({ name: 'ShoppingCart' })
+    (0, typeorm_1.Entity)({ name: 'ShoppingCarts' })
 ], ShoppingCart);
 //# sourceMappingURL=shopingCart.entity.js.map

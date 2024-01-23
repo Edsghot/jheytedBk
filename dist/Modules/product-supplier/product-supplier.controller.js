@@ -24,7 +24,6 @@ let ProductSupplierController = exports.ProductSupplierController = class Produc
         return this.ProductService.getAllProductSupplier();
     }
     createUser(newProduct) {
-        return this.ProductService.createProductSupplier(newProduct);
     }
 };
 __decorate([

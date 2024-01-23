@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
-import { User } from '../user/user.entity';
+import { UserEntity } from '../../ENTITY/User/user.entity';
 export declare class AuthServiceService {
     private userRepository;
-    constructor(userRepository: Repository<User>);
+    constructor(userRepository: Repository<UserEntity>);
     googleLogin(req: any): Promise<"No user from google" | {
         message: string;
         value: any;

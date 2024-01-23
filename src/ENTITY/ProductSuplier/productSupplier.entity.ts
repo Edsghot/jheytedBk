@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
+import { ProductEntity } from "../Product/Products.entity";
+import { SupplierEntity } from "../Supplier/Supplier.entity";
 
 export enum CategoryEnum{
     normal = 0,
@@ -7,19 +9,21 @@ export enum CategoryEnum{
 }
 
 
-@Entity({ name: 'ProductSupplier' })
-export class ProductSupplier {
+@Entity({ name: 'ProductSuppliers' })
+export class ProductSupplierEntity {
     @PrimaryGeneratedColumn()
     IdProductSupplier: number;
     
     @Column({ type: 'double' })
     PriceProduct: number;
 
-    @Column()
-    IdProduct: number;
-    
-    @Column()
-    IdSupplier: number;
+    @ManyToOne(() => ProductEntity, product => product.IdProduct)
+    @JoinColumn({ name: 'IdProduct' })
+    product: ProductEntity;
+
+    @ManyToOne(() => SupplierEntity, supplier => supplier.IdSupplier)
+    @JoinColumn({ name: 'IdSupplier' })
+    supplier: SupplierEntity;
     
     @Column()
     ImgProduct: string;

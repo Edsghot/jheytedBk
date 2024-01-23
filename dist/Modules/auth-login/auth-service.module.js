@@ -13,12 +13,12 @@ const auth_service_controller_1 = require("./auth-service.controller");
 const google_strategy_1 = require("./google.strategy");
 const facebook_strategy_1 = require("./facebook.strategy");
 const typeorm_1 = require("@nestjs/typeorm");
-const user_entity_1 = require("../user/user.entity");
+const user_entity_1 = require("../../ENTITY/User/user.entity");
 let AuthServiceModule = exports.AuthServiceModule = class AuthServiceModule {
 };
 exports.AuthServiceModule = AuthServiceModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.User])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.UserEntity])],
         providers: [auth_service_service_1.AuthServiceService, google_strategy_1.GoogleStrategy, facebook_strategy_1.FacebookStrategy],
         controllers: [auth_service_controller_1.AuthServiceController]
     })

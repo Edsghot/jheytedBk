@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const common_1 = require("@nestjs/common");
 const dist_1 = require("@nestjs/typeorm/dist");
-const user_entity_1 = require("./user.entity");
+const user_entity_1 = require("../../ENTITY/User/user.entity");
 const typeorm_1 = require("typeorm");
 let UserService = exports.UserService = class UserService {
     constructor(userRepository) {
@@ -27,13 +27,13 @@ let UserService = exports.UserService = class UserService {
     }
     getbyId(idUser) {
         return this.userRepository.findOne({
-            where: { idUser: idUser }
+            where: { IdUser: idUser }
         });
     }
     async loginUser(user) {
-        const { email, password } = user;
+        const { Email, Password } = user;
         const existingUser = await this.userRepository.findOne({
-            where: { email, password }
+            where: { Email, Password }
         });
         if (existingUser) {
             return existingUser;
@@ -50,7 +50,7 @@ let UserService = exports.UserService = class UserService {
 };
 exports.UserService = UserService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, dist_1.InjectRepository)(user_entity_1.User)),
+    __param(0, (0, dist_1.InjectRepository)(user_entity_1.UserEntity)),
     __metadata("design:paramtypes", [typeorm_1.Repository])
 ], UserService);
 //# sourceMappingURL=user.service.js.map

@@ -1,7 +1,7 @@
 export class createProduct {
-    name: string;
-    flavor: string;
-    volume: string;
-    ml: string;
-    rating: number;
+    Name: string;
+    Flavor: string;
+    Volume: string;
+    Ml: string;
+    Rating: number;
 }

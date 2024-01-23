@@ -7,6 +7,7 @@ import { ShoppingCartModule } from './Modules/shopping-cart/shopping-cart.module
 import { CartModule } from './Modules/cart/cart.module';
 import { CartItemsModule } from './Modules/cart-items/cart-items.module';
 import { AuthServiceModule } from './Modules/auth-login/auth-service.module';
+import { AuthValidateModule } from './modules/auth-validate/auth-validate.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -18,7 +19,7 @@ import { AuthServiceModule } from './Modules/auth-login/auth-service.module';
       database: 'nibcqvah_Jheyted',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
-  }), UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule, AuthServiceModule],
+  }), UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule, AuthServiceModule, AuthValidateModule],
   controllers: [],
   providers: [],
 })

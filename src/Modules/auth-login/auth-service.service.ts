@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from '../../ENTITY/User/user.entity';
+import { UserEntity } from '../../ENTITY/User/user.entity';
 
 @Injectable()
 export class AuthServiceService {
 
-    constructor(@InjectRepository(User) private userRepository: Repository<User>){}
+    constructor(@InjectRepository(UserEntity) private userRepository: Repository<UserEntity>){}
 
     async googleLogin(req){
         if(!req.user){
@@ -15,7 +15,7 @@ export class AuthServiceService {
         const {id} = req.user
 
         const existingUser = await this.userRepository.findOne({
-            where: { idGoogle: id },
+            where: { IdGoogle: id },
         });
         
         if(existingUser === null){
@@ -41,7 +41,7 @@ export class AuthServiceService {
         const {id} = req.user
 
         const existingUser = await this.userRepository.findOne({
-            where: { idFacebook: id },
+            where: { IdFacebook: id },
         });
 
         if(existingUser === null){

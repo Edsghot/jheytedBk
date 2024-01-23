@@ -9,39 +9,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductSupplier = void 0;
+exports.ProductSupplierEntity = exports.CategoryEnum = void 0;
 const typeorm_1 = require("typeorm");
-let ProductSupplier = exports.ProductSupplier = class ProductSupplier {
+const Products_entity_1 = require("../Product/Products.entity");
+const Supplier_entity_1 = require("../Supplier/Supplier.entity");
+var CategoryEnum;
+(function (CategoryEnum) {
+    CategoryEnum[CategoryEnum["normal"] = 0] = "normal";
+    CategoryEnum[CategoryEnum["MasVendido"] = 1] = "MasVendido";
+    CategoryEnum[CategoryEnum["Recomendado"] = 2] = "Recomendado";
+})(CategoryEnum || (exports.CategoryEnum = CategoryEnum = {}));
+let ProductSupplierEntity = exports.ProductSupplierEntity = class ProductSupplierEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], ProductSupplier.prototype, "idProductSupplier", void 0);
+], ProductSupplierEntity.prototype, "IdProductSupplier", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'double' }),
     __metadata("design:type", Number)
-], ProductSupplier.prototype, "priceProduct", void 0);
+], ProductSupplierEntity.prototype, "PriceProduct", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], ProductSupplier.prototype, "product_id", void 0);
+    (0, typeorm_1.ManyToOne)(() => Products_entity_1.ProductEntity, product => product.IdProduct),
+    (0, typeorm_1.JoinColumn)({ name: 'IdProduct' }),
+    __metadata("design:type", Products_entity_1.ProductEntity)
+], ProductSupplierEntity.prototype, "product", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], ProductSupplier.prototype, "supplier_id", void 0);
+    (0, typeorm_1.ManyToOne)(() => Supplier_entity_1.SupplierEntity, supplier => supplier.IdSupplier),
+    (0, typeorm_1.JoinColumn)({ name: 'IdSupplier' }),
+    __metadata("design:type", Supplier_entity_1.SupplierEntity)
+], ProductSupplierEntity.prototype, "supplier", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], ProductSupplier.prototype, "imgProduct", void 0);
+], ProductSupplierEntity.prototype, "ImgProduct", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Boolean)
-], ProductSupplier.prototype, "isPromotion", void 0);
+], ProductSupplierEntity.prototype, "IsPromotion", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'double', nullable: true }),
     __metadata("design:type", Number)
-], ProductSupplier.prototype, "promotionPrice", void 0);
-exports.ProductSupplier = ProductSupplier = __decorate([
-    (0, typeorm_1.Entity)({ name: 'ProductSupplier' })
-], ProductSupplier);
+], ProductSupplierEntity.prototype, "PromotionPrice", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], ProductSupplierEntity.prototype, "Score", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], ProductSupplierEntity.prototype, "Stock", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Date)
+], ProductSupplierEntity.prototype, "DateAdded", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], ProductSupplierEntity.prototype, "Category", void 0);
+exports.ProductSupplierEntity = ProductSupplierEntity = __decorate([
+    (0, typeorm_1.Entity)({ name: 'ProductSuppliers' })
+], ProductSupplierEntity);
 //# sourceMappingURL=productSupplier.entity.js.map

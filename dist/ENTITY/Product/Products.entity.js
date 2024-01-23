@@ -9,35 +9,61 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Product = void 0;
+exports.ProductEntity = exports.ContainerTypeEnum = exports.TypeEnum = void 0;
 const typeorm_1 = require("typeorm");
-let Product = exports.Product = class Product {
+var TypeEnum;
+(function (TypeEnum) {
+    TypeEnum[TypeEnum["Wisky"] = 0] = "Wisky";
+    TypeEnum[TypeEnum["Rones"] = 1] = "Rones";
+    TypeEnum[TypeEnum["Pisco"] = 2] = "Pisco";
+    TypeEnum[TypeEnum["Gaseosa"] = 3] = "Gaseosa";
+    TypeEnum[TypeEnum["Agua"] = 4] = "Agua";
+})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
+var ContainerTypeEnum;
+(function (ContainerTypeEnum) {
+    ContainerTypeEnum[ContainerTypeEnum["Canned"] = 0] = "Canned";
+    ContainerTypeEnum[ContainerTypeEnum["Disposable"] = 1] = "Disposable";
+    ContainerTypeEnum[ContainerTypeEnum["Glass"] = 2] = "Glass";
+})(ContainerTypeEnum || (exports.ContainerTypeEnum = ContainerTypeEnum = {}));
+let ProductEntity = exports.ProductEntity = class ProductEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Product.prototype, "productId", void 0);
+], ProductEntity.prototype, "IdProduct", void 0);
 __decorate([
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
-], Product.prototype, "name", void 0);
+], ProductEntity.prototype, "Name", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Product.prototype, "flavor", void 0);
+], ProductEntity.prototype, "Flavor", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Product.prototype, "volume", void 0);
+], ProductEntity.prototype, "Volume", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Product.prototype, "ml", void 0);
+], ProductEntity.prototype, "Ml", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Product.prototype, "rating", void 0);
-exports.Product = Product = __decorate([
+], ProductEntity.prototype, "Score", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], ProductEntity.prototype, "Description", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], ProductEntity.prototype, "Type", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], ProductEntity.prototype, "ContainerType", void 0);
+exports.ProductEntity = ProductEntity = __decorate([
     (0, typeorm_1.Entity)({ name: 'Products' })
-], Product);
+], ProductEntity);
 //# sourceMappingURL=Products.entity.js.map

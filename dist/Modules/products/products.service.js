@@ -30,13 +30,13 @@ let ProductsService = exports.ProductsService = class ProductsService {
     }
     getbyId(productId) {
         return this.productRepository.findOne({
-            where: { productId: productId }
+            where: { IdProduct: productId }
         });
     }
 };
 exports.ProductsService = ProductsService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_2.InjectRepository)(Products_entity_1.Product)),
+    __param(0, (0, typeorm_2.InjectRepository)(Products_entity_1.ProductEntity)),
     __metadata("design:paramtypes", [typeorm_1.Repository])
 ], ProductsService);
 //# sourceMappingURL=products.service.js.map

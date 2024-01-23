@@ -16,7 +16,7 @@ exports.AuthServiceService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
-const user_entity_1 = require("../user/user.entity");
+const user_entity_1 = require("../../ENTITY/User/user.entity");
 let AuthServiceService = exports.AuthServiceService = class AuthServiceService {
     constructor(userRepository) {
         this.userRepository = userRepository;
@@ -27,7 +27,7 @@ let AuthServiceService = exports.AuthServiceService = class AuthServiceService {
         }
         const { id } = req.user;
         const existingUser = await this.userRepository.findOne({
-            where: { idGoogle: id },
+            where: { IdGoogle: id },
         });
         if (existingUser === null) {
             return {
@@ -48,7 +48,7 @@ let AuthServiceService = exports.AuthServiceService = class AuthServiceService {
         }
         const { id } = req.user;
         const existingUser = await this.userRepository.findOne({
-            where: { idFacebook: id },
+            where: { IdFacebook: id },
         });
         if (existingUser === null) {
             return {
@@ -66,7 +66,7 @@ let AuthServiceService = exports.AuthServiceService = class AuthServiceService {
 };
 exports.AuthServiceService = AuthServiceService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(user_entity_1.User)),
+    __param(0, (0, typeorm_1.InjectRepository)(user_entity_1.UserEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], AuthServiceService);
 //# sourceMappingURL=auth-service.service.js.map

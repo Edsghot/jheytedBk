@@ -21,17 +21,13 @@ let ProductSupplierService = exports.ProductSupplierService = class ProductSuppl
     constructor(productSupplierRepository) {
         this.productSupplierRepository = productSupplierRepository;
     }
-    createProductSupplier(productSupplier) {
-        const newProductSupplier = this.productSupplierRepository.create(productSupplier);
-        return this.productSupplierRepository.save(newProductSupplier);
-    }
     getAllProductSupplier() {
         return this.productSupplierRepository.find();
     }
 };
 exports.ProductSupplierService = ProductSupplierService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(productSupplier_entity_1.ProductSupplier)),
+    __param(0, (0, typeorm_1.InjectRepository)(productSupplier_entity_1.ProductSupplierEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], ProductSupplierService);
 //# sourceMappingURL=product-supplier.service.js.map

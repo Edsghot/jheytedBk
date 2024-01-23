@@ -37,6 +37,9 @@ export class UserEntity {
     
     @Column()
     ProfileImage: string;
+
+    @Column()
+    VerificationCode: string;
     
     @Column()
     IdGoogle: string;

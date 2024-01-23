@@ -16,6 +16,7 @@ const shopping_cart_module_1 = require("./Modules/shopping-cart/shopping-cart.mo
 const cart_module_1 = require("./Modules/cart/cart.module");
 const cart_items_module_1 = require("./Modules/cart-items/cart-items.module");
 const auth_service_module_1 = require("./Modules/auth-login/auth-service.module");
+const auth_validate_module_1 = require("./modules/auth-validate/auth-validate.module");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
@@ -29,7 +30,7 @@ exports.AppModule = AppModule = __decorate([
                 database: 'nibcqvah_Jheyted',
                 entities: [__dirname + '/**/*.entity{.ts,.js}'],
                 synchronize: true
-            }), user_module_1.UserModule, products_module_1.ProductsModule, product_supplier_module_1.ProductSupplierModule, shopping_cart_module_1.ShoppingCartModule, cart_module_1.CartModule, cart_items_module_1.CartItemsModule, auth_service_module_1.AuthServiceModule],
+            }), user_module_1.UserModule, products_module_1.ProductsModule, product_supplier_module_1.ProductSupplierModule, shopping_cart_module_1.ShoppingCartModule, cart_module_1.CartModule, cart_items_module_1.CartItemsModule, auth_service_module_1.AuthServiceModule, auth_validate_module_1.AuthValidateModule],
         controllers: [],
         providers: [],
     })

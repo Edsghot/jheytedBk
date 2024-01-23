@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Product } from '../../ENTITY/Product/Products.entity';
+import { ProductEntity } from '../../ENTITY/Product/Products.entity';
 import { createProduct } from '../../DTOs/Product/createProducto.dto';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 @Injectable()
 export class ProductsService {
 
-    constructor(@InjectRepository(Product) private productRepository: Repository<Product>){}
+    constructor(@InjectRepository(ProductEntity) private productRepository: Repository<ProductEntity>){}
 
     
     createProduct(product: createProduct){
@@ -20,7 +20,7 @@ export class ProductsService {
     }
     getbyId(productId: number){
         return this.productRepository.findOne({
-            where: { productId:productId}
+            where: { IdProduct:productId}
           });
         
     }

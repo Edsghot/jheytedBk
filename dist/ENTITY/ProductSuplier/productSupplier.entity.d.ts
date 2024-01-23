@@ -1,9 +1,20 @@
-export declare class ProductSupplier {
-    idProductSupplier: number;
-    priceProduct: number;
-    product_id: number;
-    supplier_id: number;
-    imgProduct: string;
-    isPromotion: boolean;
-    promotionPrice: number;
+import { ProductEntity } from "../Product/Products.entity";
+import { SupplierEntity } from "../Supplier/Supplier.entity";
+export declare enum CategoryEnum {
+    normal = 0,
+    MasVendido = 1,
+    Recomendado = 2
+}
+export declare class ProductSupplierEntity {
+    IdProductSupplier: number;
+    PriceProduct: number;
+    product: ProductEntity;
+    supplier: SupplierEntity;
+    ImgProduct: string;
+    IsPromotion: boolean;
+    PromotionPrice: number;
+    Score: number;
+    Stock: number;
+    DateAdded: Date;
+    Category: CategoryEnum;
 }

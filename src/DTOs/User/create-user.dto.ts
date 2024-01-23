@@ -5,9 +5,11 @@ export class createUserDto{
     Password: string;
     FirstName: string;
     LastName: string;
-    Age: Date;
+    BirthDate: Date;
     Role: UserRole;
     points: number;
-    profileImg: string;
-
+    ProfileImage: string;
+    Phone: string;
+    IdGoogle: string;
+    IdFacebook: string;
 }
