@@ -17,7 +17,7 @@ let AuthValidateModule = exports.AuthValidateModule = class AuthValidateModule {
 };
 exports.AuthValidateModule = AuthValidateModule = __decorate([
     (0, common_1.Module)({
-        imports: [
+        imports: [typeorm_1.TypeOrmModule.forFeature([ValidateEmailSms_entity_1.ValidateEmailSmsEntity]),
             mailer_1.MailerModule.forRoot({
                 transport: {
                     service: 'gmail',
@@ -26,7 +26,7 @@ exports.AuthValidateModule = AuthValidateModule = __decorate([
                         pass: 'ngaflzpbwzqbqykh'
                     }
                 }
-            }), typeorm_1.TypeOrmModule.forFeature([ValidateEmailSms_entity_1.ValidateEmailSmsEntity])
+            })
         ],
         providers: [auth_validate_service_1.AuthValidateService],
         controllers: [auth_validate_controller_1.AuthValidateController]

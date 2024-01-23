@@ -6,7 +6,7 @@ export class ValidateEmailSmsEntity{
     @PrimaryGeneratedColumn()
     IdValidate: number;
     
-    @Column({ unique: true })
+    @Column()
     Email: string;
     
     @Column()

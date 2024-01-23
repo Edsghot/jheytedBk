@@ -6,7 +6,7 @@ import { ValidateEmailSmsEntity } from 'src/ENTITY/AuthEntity/ValidateEmailSms.e
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [
+  imports: [TypeOrmModule.forFeature([ValidateEmailSmsEntity]),
     MailerModule.forRoot(
       {
         transport: {
@@ -17,7 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
           }
         }
       }
-    ),TypeOrmModule.forFeature([ValidateEmailSmsEntity])
+    )
   ],
   providers: [AuthValidateService],
   controllers: [AuthValidateController]

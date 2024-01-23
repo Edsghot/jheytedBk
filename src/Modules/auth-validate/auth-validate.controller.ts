@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { AuthValidateService } from './auth-validate.service';
 import { from } from 'rxjs';
 
@@ -8,8 +8,8 @@ export class AuthValidateController {
 
     }
 
-    @Post()
-    async sendMail(@Body() email: string){
-        return await this.authService.sendMail(email);
+    @Get()
+     async sendMail(@Query('email') email: string){
+        return  await this.authService.sendMail(email);
     }
 }
