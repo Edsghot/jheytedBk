@@ -7,7 +7,7 @@ export class createUserDto{
     LastName: string;
     BirthDate: Date;
     Role: UserRole;
-    points: number;
+    Points: number;
     ProfileImage: string;
     Phone: string;
     IdGoogle: string;
