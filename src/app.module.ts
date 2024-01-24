@@ -8,7 +8,6 @@ import { CartModule } from './Modules/cart/cart.module';
 import { CartItemsModule } from './Modules/cart-items/cart-items.module';
 import { AuthServiceModule } from './Modules/auth-login/auth-service.module';
 import { AuthValidateModule } from './modules/auth-validate/auth-validate.module';
-import { AuthValidateSmsModule } from './modules/auth-validate-sms/auth-validate-sms.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -20,7 +19,7 @@ import { AuthValidateSmsModule } from './modules/auth-validate-sms/auth-validate
       database: 'nibcqvah_Jheyted',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
-  }), UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule, AuthServiceModule, AuthValidateModule, AuthValidateSmsModule],
+  }), UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule, AuthServiceModule, AuthValidateModule],
   controllers: [],
   providers: [],
 })
