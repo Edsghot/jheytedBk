@@ -27,8 +27,8 @@ export class UserController {
       return await this.userService.loginUser(loginUser);
     }
 
-    @Post('validate')
-     async validateCode(@Body() data: ValidateEmailDto){
+      @Post('validate')
+      async validateCode(@Body() data: ValidateEmailDto){
         var res = await this.userService.validateCode(data);
         return res;
       }
