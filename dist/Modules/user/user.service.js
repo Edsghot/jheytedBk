@@ -57,12 +57,15 @@ let UserService = exports.UserService = class UserService {
             where: { Email }
         });
         if (existing === null) {
-            return res.resultFail("Error al validar código");
+            return { msg: "Error en validar el codigo",
+                value: false };
         }
         if (existing.Code === Code) {
-            return res.resultOK("Está Correcto");
+            return { msg: "Esta correcto",
+                value: true };
         }
-        return res.resultFail("Error al validar código");
+        return { msg: "Error al validar código",
+            value: false };
     }
 };
 exports.UserService = UserService = __decorate([

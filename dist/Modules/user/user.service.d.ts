@@ -16,5 +16,8 @@ export declare class UserService {
     getAllUser(): Promise<UserEntity[]>;
     deleteUser(): void;
     updateUser(): void;
-    validateCode(data: ValidateEmailDto): Promise<void>;
+    validateCode(data: ValidateEmailDto): Promise<{
+        msg: string;
+        value: boolean;
+    }>;
 }

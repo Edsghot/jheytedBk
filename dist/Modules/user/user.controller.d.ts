@@ -11,5 +11,8 @@ export declare class UserController {
     loginUser(loginUser: loginUsers): Promise<import("../../ENTITY/User/user.entity").UserEntity | {
         msg: string;
     }>;
-    validateCode(data: ValidateEmailDto): Promise<void>;
+    validateCode(data: ValidateEmailDto): Promise<{
+        msg: string;
+        value: boolean;
+    }>;
 }
