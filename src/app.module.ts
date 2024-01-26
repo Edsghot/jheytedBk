@@ -6,9 +6,9 @@ import { ProductSupplierModule } from './Modules/product-supplier/product-suppli
 import { ShoppingCartModule } from './Modules/shopping-cart/shopping-cart.module';
 import { CartModule } from './Modules/cart/cart.module';
 import { CartItemsModule } from './Modules/cart-items/cart-items.module';
+import { ChatModule } from './Modules/chat/chat.module';
 import { AuthServiceModule } from './Modules/auth-login/auth-service.module';
 import { AuthValidateModule } from './Modules/auth-validate/auth-validate.module';
-import { ChatModule } from './Modules/chat/chat.module';
 
 
 @Module({
