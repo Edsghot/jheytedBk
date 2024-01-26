@@ -7,6 +7,8 @@ export declare class UserEntity {
     IdUser: number;
     Email: string;
     Password: string;
+    UserName: string;
+    Descrption: string;
     FirstName: string;
     LastName: string;
     BirthDate: Date;
@@ -14,7 +16,7 @@ export declare class UserEntity {
     Points: number;
     Phone: string;
     ProfileImage: string;
-    VerificationCode: string;
+    DateAdded: Date;
     IdGoogle: string;
     IdFacebook: string;
 }

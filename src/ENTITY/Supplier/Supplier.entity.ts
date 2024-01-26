@@ -25,6 +25,9 @@ export class SupplierEntity {
     Ruc: string;
 
     @Column()
+    Dni: string;
+
+    @Column()
     Phone: string;
 
     @Column()

@@ -16,6 +16,12 @@ export class UserEntity {
     
     @Column()
     Password: string;
+
+    @Column()
+    UserName: string;
+
+    @Column()
+    Descrption: string;
     
     @Column()
     FirstName: string;
@@ -39,7 +45,7 @@ export class UserEntity {
     ProfileImage: string;
 
     @Column()
-    VerificationCode: string;
+    DateAdded: Date;
     
     @Column()
     IdGoogle: string;

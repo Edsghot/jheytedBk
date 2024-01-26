@@ -8,8 +8,8 @@ export declare enum CategoryEnum {
 export declare class ProductSupplierEntity {
     IdProductSupplier: number;
     PriceProduct: number;
-    product: ProductEntity;
-    supplier: SupplierEntity;
+    Product: ProductEntity;
+    Supplier: SupplierEntity;
     ImgProduct: string;
     IsPromotion: boolean;
     PromotionPrice: number;

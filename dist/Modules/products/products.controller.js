@@ -26,6 +26,9 @@ let ProductsController = exports.ProductsController = class ProductsController {
     getById(productId) {
         return this.ProductService.getbyId(productId);
     }
+    async getBestSelling(rating) {
+        return await this.ProductService.getBestSelling(rating);
+    }
     createUser(newUser) {
         return this.ProductService.createProduct(newUser);
     }
@@ -43,6 +46,13 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getById", null);
+__decorate([
+    (0, common_1.Get)('BestSelling/:rating'),
+    __param(0, (0, common_1.Param)('rating')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], ProductsController.prototype, "getBestSelling", null);
 __decorate([
     (0, common_1.Post)('insert'),
     __param(0, (0, common_1.Body)()),

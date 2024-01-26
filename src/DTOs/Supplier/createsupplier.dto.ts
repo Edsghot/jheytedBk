@@ -1,12 +1,11 @@
-export declare class SupplierEntity {
-    IdSupplier: number;
+
+export class CreateSupplierDto{
     Email: string;
     Password: string;
     Name: string;
     ContactPerson: string;
-    Direccion: string;
+    Direccion:string;
     Ruc: string;
     Dni: string;
     Phone: string;
-    DateAdded: Date;
 }

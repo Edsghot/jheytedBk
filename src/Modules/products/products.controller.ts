@@ -16,6 +16,11 @@ export class ProductsController {
       return this.ProductService.getbyId(productId); // Llama al método en el servicio
     }
 
+    @Get('BestSelling/:rating') 
+    async getBestSelling(@Param('rating') rating: number) { 
+      return await this.ProductService.getBestSelling(rating); 
+    }
+
     @Post('insert')
     createUser(@Body() newUser: createProduct){
         return this.ProductService.createProduct(newUser);

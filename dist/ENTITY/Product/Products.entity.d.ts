@@ -17,6 +17,7 @@ export declare class ProductEntity {
     Volume: string;
     Ml: string;
     Score: number;
+    Bestselling: number;
     Description: string;
     Type: TypeEnum;
     ContainerType: ContainerTypeEnum;

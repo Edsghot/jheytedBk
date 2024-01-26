@@ -1,5 +1,4 @@
-export declare class SupplierEntity {
-    IdSupplier: number;
+export declare class CreateSupplierDto {
     Email: string;
     Password: string;
     Name: string;
@@ -8,5 +7,4 @@ export declare class SupplierEntity {
     Ruc: string;
     Dni: string;
     Phone: string;
-    DateAdded: Date;
 }

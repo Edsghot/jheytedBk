@@ -8,12 +8,30 @@ export declare class UserService {
     private userRepository;
     private validateRepository;
     constructor(userRepository: Repository<UserEntity>, validateRepository: Repository<ValidateEmailSmsEntity>);
-    createUser(user: createUserDto): Promise<UserEntity>;
-    getbyId(idUser: number): Promise<UserEntity>;
-    loginUser(user: loginUsers): Promise<UserEntity | {
+    createUser(user: createUserDto): {
         msg: string;
+        value: Promise<UserEntity>;
+        succes?: undefined;
+    } | {
+        msg: string;
+        succes: boolean;
+        value?: undefined;
+    };
+    getbyId(idUser: number): {
+        msg: string;
+        value: Promise<UserEntity>;
+    };
+    loginUser(user: loginUsers): Promise<{
+        msg: string;
+        value: UserEntity;
+    } | {
+        msg: string;
+        value?: undefined;
     }>;
-    getAllUser(): Promise<UserEntity[]>;
+    getAllUser(): {
+        msg: string;
+        value: Promise<UserEntity[]>;
+    };
     deleteUser(): void;
     updateUser(): void;
     validateCode(data: ValidateEmailDto): Promise<{

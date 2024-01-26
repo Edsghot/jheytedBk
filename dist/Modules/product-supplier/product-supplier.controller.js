@@ -23,7 +23,12 @@ let ProductSupplierController = exports.ProductSupplierController = class Produc
     getUsers() {
         return this.ProductService.getAllProductSupplier();
     }
-    createUser(newProduct) {
+    async createProductSupplier(productSupplierData) {
+        const createdProductSupplier = await this.ProductService.createProductSupplier(productSupplierData);
+        return {
+            success: true,
+            data: createdProductSupplier,
+        };
     }
 };
 __decorate([
@@ -36,9 +41,9 @@ __decorate([
     (0, common_1.Post)('insert'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [createProductSupplier_dto_1.createProductSupplier]),
-    __metadata("design:returntype", void 0)
-], ProductSupplierController.prototype, "createUser", null);
+    __metadata("design:paramtypes", [createProductSupplier_dto_1.createProductSupplierDto]),
+    __metadata("design:returntype", Promise)
+], ProductSupplierController.prototype, "createProductSupplier", null);
 exports.ProductSupplierController = ProductSupplierController = __decorate([
     (0, common_1.Controller)('productsupplier'),
     __metadata("design:paramtypes", [product_supplier_service_1.ProductSupplierService])

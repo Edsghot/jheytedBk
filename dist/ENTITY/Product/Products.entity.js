@@ -53,6 +53,10 @@ __decorate([
 ], ProductEntity.prototype, "Score", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], ProductEntity.prototype, "Bestselling", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], ProductEntity.prototype, "Description", void 0);
 __decorate([

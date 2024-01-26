@@ -33,12 +33,12 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => Products_entity_1.ProductEntity, product => product.IdProduct),
     (0, typeorm_1.JoinColumn)({ name: 'IdProduct' }),
     __metadata("design:type", Products_entity_1.ProductEntity)
-], ProductSupplierEntity.prototype, "product", void 0);
+], ProductSupplierEntity.prototype, "Product", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Supplier_entity_1.SupplierEntity, supplier => supplier.IdSupplier),
     (0, typeorm_1.JoinColumn)({ name: 'IdSupplier' }),
     __metadata("design:type", Supplier_entity_1.SupplierEntity)
-], ProductSupplierEntity.prototype, "supplier", void 0);
+], ProductSupplierEntity.prototype, "Supplier", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)

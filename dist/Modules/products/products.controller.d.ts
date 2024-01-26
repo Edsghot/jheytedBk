@@ -5,5 +5,17 @@ export declare class ProductsController {
     constructor(ProductService: ProductsService);
     getUsers(): Promise<import("../../ENTITY/Product/Products.entity").ProductEntity[]>;
     getById(productId: number): Promise<import("../../ENTITY/Product/Products.entity").ProductEntity>;
-    createUser(newUser: createProduct): Promise<import("../../ENTITY/Product/Products.entity").ProductEntity>;
+    getBestSelling(rating: number): Promise<{
+        msg: string;
+        value: any;
+    }>;
+    createUser(newUser: createProduct): {
+        msg: string;
+        value: Promise<import("../../ENTITY/Product/Products.entity").ProductEntity>;
+        sucess?: undefined;
+    } | {
+        msg: string;
+        value: any;
+        sucess: boolean;
+    };
 }

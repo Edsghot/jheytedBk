@@ -3,5 +3,8 @@ export declare class createProduct {
     Flavor: string;
     Volume: string;
     Ml: string;
-    Rating: number;
+    Score: number;
+    Description: string;
+    Type: number;
+    ContainerType: number;
 }

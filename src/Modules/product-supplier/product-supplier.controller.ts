@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ProductSupplierService } from './product-supplier.service';
-import { createProductSupplier } from '../../DTOs/ProductSuplier/createProductSupplier.dto';
-
+import { createProductSupplierDto } from 'src/DTOs/ProductSuplier/createProductSupplier.dto';
 @Controller('productsupplier')
 export class ProductSupplierController {
     constructor(private ProductService: ProductSupplierService){}
@@ -12,7 +11,13 @@ export class ProductSupplierController {
     }
 
     @Post('insert')
-    createUser(@Body() newProduct: createProductSupplier){
-        //return this.ProductService.createProductSupplier(newProduct);
-    }
+  async createProductSupplier(@Body() productSupplierData: createProductSupplierDto) {
+
+      const createdProductSupplier = await this.ProductService.createProductSupplier(productSupplierData);
+      return {
+        success: true,
+        data: createdProductSupplier,
+      };
+   
+  }
 }

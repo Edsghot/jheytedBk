@@ -1,9 +1,9 @@
-export declare class createProductSupplier {
+export declare class createProductSupplierDto {
+    IdProduct: number;
+    IdSupplier: number;
     PriceProduct: number;
-    Product_id: number;
-    Supplier_id: number;
-    imgProduct: string;
-    isPromotion: boolean;
-    promotionPrice: number;
-    img: File;
+    ImgProduct: string;
+    IsPromotion: boolean;
+    PromotionPrice: number;
+    Stock: number;
 }

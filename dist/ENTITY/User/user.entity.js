@@ -34,6 +34,14 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
+], UserEntity.prototype, "UserName", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], UserEntity.prototype, "Descrption", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
 ], UserEntity.prototype, "FirstName", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
@@ -61,8 +69,8 @@ __decorate([
 ], UserEntity.prototype, "ProfileImage", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], UserEntity.prototype, "VerificationCode", void 0);
+    __metadata("design:type", Date)
+], UserEntity.prototype, "DateAdded", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)

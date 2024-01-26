@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm/dist';
-import {UserEntity} from '../../ENTITY/User/user.entity'
+import {UserEntity, UserRole} from '../../ENTITY/User/user.entity'
 import { Repository } from 'typeorm';
 import {createUserDto} from '../../DTOs/User/create-user.dto'
 import { loginUsers } from '../../DTOs/User/loginUser.dto';
@@ -16,14 +16,54 @@ export class UserService {
 
     
     createUser(user: createUserDto){
-        const newUser = this.userRepository.create(user)
-        return this.userRepository.save(newUser)
+
+        var u = new UserEntity();
+
+        u.Email = user.Email;
+        u.Password = user.Password;
+        u.UserName = user.FirstName;
+        u.Descrption = " __x____";
+        u.FirstName = user.FirstName;
+        u.LastName = user.LastName;
+        u.BirthDate = user.BirthDate;
+        u.Role = UserRole.user;
+        u.Points = 0;
+        u.Phone = user.Phone;
+        u.ProfileImage = "https://i.pinimg.com/736x/4b/a3/43/4ba343a87d8da59e1e4d0bdf7dc09484.jpg";
+        u.DateAdded = new Date();
+        u.IdGoogle = user.IdGoogle;
+        u.IdFacebook = user.IdFacebook;
+        try{
+          const newUser = this.userRepository.create(u)
+          return {msg: "Se creo correctamente",
+                  value: this.userRepository.save(newUser)}
+        }catch(e){
+          return {
+            msg: "error al registrar el usuario: "+e,
+            succes: false
+          }
+        }
+        
     }
 
     getbyId(idUser: number){
-      return this.userRepository.findOne({
+
+
+      var user = this.userRepository.findOne({
           where: { IdUser:idUser}
         });
+
+        if(user === null){
+          return {
+            msg:"No existe ningun usuario que cuencida",
+            value: null
+          }
+        }
+
+        return {
+          msg: " se encontro correctamente",
+          value: user
+        }
       
     }
 
@@ -36,19 +76,20 @@ export class UserService {
         });
       
         if (existingUser) {
-          return existingUser;
+          return {msg: "Ingreso correctamente",
+                  value: existingUser};
         } else {
           return { msg: "credenciales invalidas" };
         }
       }
     getAllUser(){
-        return this.userRepository.find();
+        return {msg:"Lista de Usuarios",
+                value: this.userRepository.find()}
     }
     deleteUser(){}
     updateUser(){}
 
     async validateCode(data: ValidateEmailDto) {
-      var res = new ResMessage();
       const { Email, Code } = data;
     
       var existing = await this.validateRepository.findOne({

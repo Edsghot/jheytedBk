@@ -11,8 +11,17 @@ export class ProductsService {
 
     
     createProduct(product: createProduct){
+       try{
         const newProduct = this.productRepository.create(product)
-        return this.productRepository.save(newProduct)
+        return {msg: "Se creo correctamente",
+        value: this.productRepository.save(newProduct)}
+       }catch(e){
+            return {
+                msg: "Error al agregar el producto: "+e,
+                value: null,
+                sucess: false
+            }
+       } 
     }
 
     getAllProduct(){
@@ -24,5 +33,31 @@ export class ProductsService {
           });
         
     }
+
+    async getBestSelling(rating: number){
+        try{
+
+            const results = await this.productRepository.query(`CALL SP_ObtenerProductoMasVendido(${rating})`);
+            
+            if (results && results.length > 0 && Array.isArray(results[0])) {
+                return {
+                    msg: "se encontraron estos productos",
+                    value: results[0]
+                };
+            } else {
+                return {
+                    msg: "no se encontraron los productos",
+                    value: results[0]
+                };
+            }
+            
+        }catch(e){
+            return {
+                msg: "Error al consumir el store procedure",
+                value: null
+            };
+        }
+    }
+    
     
 }

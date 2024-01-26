@@ -44,6 +44,10 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
+], SupplierEntity.prototype, "Dni", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
 ], SupplierEntity.prototype, "Phone", void 0);
 __decorate([
     (0, typeorm_1.Column)(),

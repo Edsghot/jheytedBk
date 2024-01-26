@@ -35,6 +35,9 @@ export class ProductEntity {
     Score: number;
 
     @Column()
+    Bestselling: number;
+
+    @Column()
     Description: string;
 
     @Column()

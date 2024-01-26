@@ -19,11 +19,11 @@ export class ProductSupplierEntity {
 
     @ManyToOne(() => ProductEntity, product => product.IdProduct)
     @JoinColumn({ name: 'IdProduct' })
-    product: ProductEntity;
+    Product: ProductEntity;
 
     @ManyToOne(() => SupplierEntity, supplier => supplier.IdSupplier)
     @JoinColumn({ name: 'IdSupplier' })
-    supplier: SupplierEntity;
+    Supplier: SupplierEntity;
     
     @Column()
     ImgProduct: string;
