@@ -82,9 +82,9 @@ export class UserService {
           return { msg: "credenciales invalidas" };
         }
       }
-    getAllUser(){
+    async getAllUser(){
         return {msg:"Lista de Usuarios",
-                value: this.userRepository.find()}
+                value: await this.userRepository.find()}
     }
     deleteUser(){}
     updateUser(){}

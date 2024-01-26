@@ -28,10 +28,10 @@ export declare class UserService {
         msg: string;
         value?: undefined;
     }>;
-    getAllUser(): {
+    getAllUser(): Promise<{
         msg: string;
-        value: Promise<UserEntity[]>;
-    };
+        value: UserEntity[];
+    }>;
     deleteUser(): void;
     updateUser(): void;
     validateCode(data: ValidateEmailDto): Promise<{

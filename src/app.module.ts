@@ -8,7 +8,8 @@ import { CartModule } from './Modules/cart/cart.module';
 import { CartItemsModule } from './Modules/cart-items/cart-items.module';
 import { AuthServiceModule } from './Modules/auth-login/auth-service.module';
 import { AuthValidateModule } from './Modules/auth-validate/auth-validate.module';
-import { ChatModule } from './modules/chat/chat.module';
+import { ChatModule } from './Modules/chat/chat.module';
+
 
 @Module({
   imports: [TypeOrmModule.forRoot({

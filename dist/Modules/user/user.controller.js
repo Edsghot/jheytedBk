@@ -22,8 +22,8 @@ let UserController = exports.UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    getUsers() {
-        return this.userService.getAllUser();
+    async getUsers() {
+        return await this.userService.getAllUser();
     }
     getById(idUser) {
         return this.userService.getbyId(idUser);
@@ -43,7 +43,7 @@ __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUsers", null);
 __decorate([
     (0, common_1.Get)(':idUser'),

@@ -9,8 +9,8 @@ export class UserController {
 
     constructor(private userService: UserService){}
     @Get()
-    getUsers(){
-        return this.userService.getAllUser();
+    async getUsers(){
+        return await this.userService.getAllUser();
     }
     @Get(':idUser') // Define la ruta completa, ej: /products/1
     getById(@Param('idUser') idUser: number) { // Usa @Param('nombreDelParametro') para obtener el valor

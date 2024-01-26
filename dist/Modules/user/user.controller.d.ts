@@ -5,10 +5,10 @@ import { ValidateEmailDto } from 'src/DTOs/ValidateEmail/validateEmail.dto';
 export declare class UserController {
     private userService;
     constructor(userService: UserService);
-    getUsers(): {
+    getUsers(): Promise<{
         msg: string;
-        value: Promise<import("../../ENTITY/User/user.entity").UserEntity[]>;
-    };
+        value: import("../../ENTITY/User/user.entity").UserEntity[];
+    }>;
     getById(idUser: number): {
         msg: string;
         value: Promise<import("../../ENTITY/User/user.entity").UserEntity>;

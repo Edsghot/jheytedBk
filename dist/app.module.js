@@ -17,7 +17,7 @@ const cart_module_1 = require("./Modules/cart/cart.module");
 const cart_items_module_1 = require("./Modules/cart-items/cart-items.module");
 const auth_service_module_1 = require("./Modules/auth-login/auth-service.module");
 const auth_validate_module_1 = require("./Modules/auth-validate/auth-validate.module");
-const chat_module_1 = require("./modules/chat/chat.module");
+const chat_module_1 = require("./Modules/chat/chat.module");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
