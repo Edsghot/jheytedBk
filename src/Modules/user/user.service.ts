@@ -26,7 +26,7 @@ export class UserService {
         if(res != null){
           return {
             msg: "Ya existe registrado el correo, pruebe otro",
-            sucess: false;
+            sucess: false
           }
         }
 
