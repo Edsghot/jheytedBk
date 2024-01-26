@@ -15,9 +15,21 @@ export class UserService {
     constructor(@InjectRepository(UserEntity) private userRepository: Repository<UserEntity>,@InjectRepository(ValidateEmailSmsEntity) private validateRepository: Repository<ValidateEmailSmsEntity>){}
 
     
-    createUser(user: createUserDto){
+    async createUser(user: createUserDto){
 
         var u = new UserEntity();
+
+        var res = await this.userRepository.findOne({
+          where: {Email: user.Email}
+        })
+
+        if(res != null){
+          return {
+            msg: "Ya existe registrado el correo, pruebe otro",
+            sucess: false;
+          }
+        }
+
 
         u.Email = user.Email;
         u.Password = user.Password;
@@ -33,6 +45,8 @@ export class UserService {
         u.DateAdded = new Date();
         u.IdGoogle = user.IdGoogle;
         u.IdFacebook = user.IdFacebook;
+
+
         try{
           const newUser = this.userRepository.create(u)
           return {msg: "Se creo correctamente",
