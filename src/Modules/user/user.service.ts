@@ -7,6 +7,7 @@ import { loginUsers } from '../../DTOs/User/loginUser.dto';
 import { ValidateEmailDto } from 'src/DTOs/ValidateEmail/validateEmail.dto';
 import { ResMessage } from 'src/DTOs/Message/RespMessage.dto';
 import { ValidateEmailSmsEntity } from 'src/ENTITY/AuthEntity/ValidateEmailSms.entity';
+import { UpdateUserDto } from 'src/DTOs/User/updateUser.dto';
 
 
 @Injectable()
@@ -34,7 +35,7 @@ export class UserService {
         u.Email = user.Email;
         u.Password = user.Password;
         u.UserName = user.FirstName;
-        u.Descrption = " __x____";
+        u.Description = " __x____";
         u.FirstName = user.FirstName;
         u.LastName = user.LastName;
         u.BirthDate = user.BirthDate;
@@ -101,7 +102,6 @@ export class UserService {
                 value: await this.userRepository.find()}
     }
     deleteUser(){}
-    updateUser(){}
 
     async validateCode(data: ValidateEmailDto) {
       const { Email, Code } = data;
@@ -122,5 +122,63 @@ export class UserService {
     
       return {msg:"Error al validar código",
               value: false};
+    }
+
+    async updateProfile(idUser:number,url: string){
+
+      var n = await this.userRepository.findOne({
+        where: {IdUser: idUser}
+      })
+
+      if(n === null){
+        return {
+          msg: "No se encontro el usuario",
+          value: false
+        }
+      }
+      n.ProfileImage = url;
+
+      try{
+        
+        await this.userRepository.save(n);
+
+        return {
+          msg: "se actualizo correctamente"
+        }
+      }catch(e){
+          return {
+            msg: "Error al actualizar la foto de perfil"
+          }
+      }
+    }
+
+    async updateUser(update:UpdateUserDto,url: string){
+
+      var n = await this.userRepository.findOne({
+        where: {IdUser: update.IdUser}
+      })
+
+      if(n === null){
+        return {
+          msg: "No se encontro el usuario",
+          value: false
+        }
+      }
+      n.ProfileImage = url;
+      n.UserName = update.UserName;
+      n.Description = update.Description;
+
+      try{
+        
+        await this.userRepository.save(n);
+
+        return {
+          msg: "se actualizo correctamente"
+        }
+      }catch(e){
+          return {
+            msg: "Error al actualizar la foto de perfil"
+          }
+      }
     }
 }

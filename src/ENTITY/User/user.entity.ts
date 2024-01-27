@@ -21,7 +21,7 @@ export class UserEntity {
     UserName: string;
 
     @Column()
-    Descrption: string;
+    Description: string;
     
     @Column()
     FirstName: string;
@@ -37,6 +37,9 @@ export class UserEntity {
     
     @Column()
     Points: number;
+
+    @Column()
+    DateUpdate: Date;
 
     @Column()
     Phone: string;

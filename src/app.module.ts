@@ -9,6 +9,8 @@ import { CartItemsModule } from './Modules/cart-items/cart-items.module';
 import { ChatModule } from './Modules/chat/chat.module';
 import { AuthServiceModule } from './Modules/auth-login/auth-service.module';
 import { AuthValidateModule } from './Modules/auth-validate/auth-validate.module';
+import { CloudinaryModule } from './services/cloudinary/cloudinary.module';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
@@ -21,7 +23,7 @@ import { AuthValidateModule } from './Modules/auth-validate/auth-validate.module
       database: 'nibcqvah_Jheyted',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
-  }),AuthValidateModule, UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule, AuthServiceModule, ChatModule],
+  }),ConfigModule.forRoot({isGlobal: true}),AuthValidateModule, UserModule, ProductsModule, ProductSupplierModule, ShoppingCartModule, CartModule, CartItemsModule, AuthServiceModule, ChatModule, CloudinaryModule],
   controllers: [],
   providers: [],
 })
