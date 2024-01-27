@@ -34,9 +34,9 @@ export class AuthValidateService {
          await this.mailerService.sendMail(
             {
                 to: email,
-                from: 'edsghot@gmail.com',
-                subject: 'Por favor verifique su dirección de correo electrónico',
-                text: 'welcomee Dizzgo',
+                from: 'dizzgo.app@gmail.com',
+                subject: `Tu código de verificación es:: ${code}`,
+                text: 'welcome Dizzgo',
                 html: `<p style="border: 1px solid #ccc; padding: 10px;">Hola, ${email}. <br> <br> A continuación, le enviamos su código de verificación de correo electrónico: <br><br><strong>${code}</strong> <br></p>`,
             }
         )

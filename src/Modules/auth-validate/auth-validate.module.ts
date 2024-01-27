@@ -12,8 +12,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         transport: {
           service: 'gmail',
           auth:{
-            user: 'edsghot@gmail.com',
-            pass: 'ngaflzpbwzqbqykh'
+            user: 'dizzgo.app@gmail.com',
+            pass: 'upyrdgonwkljuqcd'
           }
         }
       }

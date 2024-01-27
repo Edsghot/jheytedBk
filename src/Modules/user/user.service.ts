@@ -63,7 +63,11 @@ export class UserService {
 
     getbyId(idUser: number){
 
-
+      if(idUser != null || idUser!= 0){
+        return{
+          msg: "envie un idUser correcto"
+        }
+      }
       var user = this.userRepository.findOne({
           where: { IdUser:idUser}
         });
@@ -164,9 +168,16 @@ export class UserService {
           value: false
         }
       }
-      n.ProfileImage = url;
-      n.UserName = update.UserName;
-      n.Description = update.Description;
+      if(url != null){
+        n.ProfileImage = url;
+      }
+      if(update.UserName != null || update.UserName != ''){
+        
+        n.UserName = update.UserName;
+      }
+      if(update.Description != null || update.Description != ''){
+        n.Description = update.Description;
+      }
 
       try{
         

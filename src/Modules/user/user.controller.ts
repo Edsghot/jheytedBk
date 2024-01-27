@@ -3,10 +3,11 @@ import { createUserDto } from '../../DTOs/User/create-user.dto';
 import { UserService } from './user.service';
 import { loginUsers } from '../../DTOs/User/loginUser.dto';
 import { ValidateEmailDto } from 'src/DTOs/ValidateEmail/validateEmail.dto';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { AnyFilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { CloudinaryService } from 'src/services/cloudinary/cloudinary.service';
 import { FOLDER_USER } from 'src/Config/constantService';
 import { UpdateUserDto } from 'src/DTOs/User/updateUser.dto';
+import { IsNull } from 'typeorm';
 
 @Controller('user')
 export class UserController {
@@ -51,16 +52,24 @@ export class UserController {
       }
 
       @Put('updateUser')
-      @UseInterceptors(FileInterceptor('file'))
-      async updateUser(@Body() update: UpdateUserDto,@UploadedFile(new ParseFilePipe({
-        validators: [
-           new MaxFileSizeValidator({maxSize: 1024*1024}),
-           new FileTypeValidator({fileType: '(png|jpeg|jpg)'})],
-      }),) file: Express.Multer.File){
+  @UseInterceptors(FileInterceptor('file'))
+  async updateUser(
+    @Body() update: UpdateUserDto,
+    @UploadedFile() file?: Express.Multer.File,
+  ) {
+        
+        if(file){
+          
+          var res = this.cloudinaryService.uploadFile(file,FOLDER_USER);
 
-        var res = this.cloudinaryService.uploadFile(file,FOLDER_USER);
+          return await this.userService.updateUser(update,(await res).secure_url);
+        }
 
-        return await this.userService.updateUser(update,(await res).secure_url);
+        return await this.userService.updateUser(update,null);
       }
+}
+
+function IsOptional(): (target: UserController, propertyKey: "updateUser", parameterIndex: 1) => void {
+  throw new Error('Function not implemented.');
 }
  
