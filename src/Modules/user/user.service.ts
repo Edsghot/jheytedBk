@@ -8,7 +8,7 @@ import { ValidateEmailDto } from 'src/DTOs/ValidateEmail/validateEmail.dto';
 import { ResMessage } from 'src/DTOs/Message/RespMessage.dto';
 import { ValidateEmailSmsEntity } from 'src/ENTITY/AuthEntity/ValidateEmailSms.entity';
 import { UpdateUserDto } from 'src/DTOs/User/updateUser.dto';
-
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UserService {
@@ -31,9 +31,10 @@ export class UserService {
           }
         }
 
+        const hashPassword = await bcrypt.hash(user.Password, 10);
 
         u.Email = user.Email;
-        u.Password = user.Password;
+        u.Password = hashPassword;
         u.UserName = user.FirstName;
         u.Description = " __x____";
         u.FirstName = user.FirstName;
@@ -89,12 +90,15 @@ export class UserService {
   
     async loginUser(user: loginUsers) {
         const { Email, Password } = user;
-      
+
+  
         const existingUser = await this.userRepository.findOne({
-          where: { Email, Password }
+          where: { Email }
         });
-      
-        if (existingUser) {
+        
+        const isMatch = await bcrypt.compare(Password, existingUser.Password);
+
+        if (isMatch) {
           return {msg: "Ingreso correctamente",
                   value: existingUser};
         } else {

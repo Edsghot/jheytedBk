@@ -4,6 +4,9 @@ import { createMessageDto } from 'src/DTOs/Chat/createMessage.dto';
 import { MessageEntity } from 'src/ENTITY/ChatEntity/Message.entity';
 import { UserEntity } from 'src/ENTITY/User/user.entity';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
+
+
 
 @Injectable()
 export class ChatService {
@@ -45,5 +48,15 @@ export class ChatService {
                  sucess: false
              }
         } 
+     }
+
+
+     async test(){
+        const password = "hola";
+        const hash = await bcrypt.hash(password, 10);
+
+        const isMatch = await bcrypt.compare("hola", hash);
+
+        return isMatch;
      }
 }

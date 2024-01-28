@@ -16,5 +16,9 @@ export class ChatController {
         return this.messageService.getAllSms();
     }
     
+    @Get('test')
+    async getTest(){
+        return await this.messageService.test();
+    }
 
 }

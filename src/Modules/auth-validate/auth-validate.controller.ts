@@ -14,5 +14,4 @@ export class AuthValidateController {
         return  await this.authService.sendMail(email);
     }
 
-    
 }

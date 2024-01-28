@@ -14,7 +14,8 @@ export class AuthValidateService {
  
      async sendMail(email: string){
         var res = new ResMessage();
-        const code = '789456';
+
+        var code = Math.floor(100000 + Math.random() * 900000).toString();
         
         var existing = await this.validateRepository.findOne({
             where: {Email:email}
@@ -30,19 +31,30 @@ export class AuthValidateService {
             const newValidate = this.validateRepository.create(nuevo)
             await this.validateRepository.save(newValidate)
 
+        var nameEmail = this.obtenerNombreEmail(email);
 
          await this.mailerService.sendMail(
             {
                 to: email,
                 from: 'dizzgo.app@gmail.com',
-                subject: `Tu código de verificación es:: ${code}`,
+                subject: `Tu código de verificación es: ${code}`,
                 text: 'welcome Dizzgo',
-                html: `<p style="border: 1px solid #ccc; padding: 10px;">Hola, ${email}. <br> <br> A continuación, le enviamos su código de verificación de correo electrónico: <br><br><strong>${code}</strong> <br></p>`,
+                html: `<div style=" font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; background-color: #f9f9f9; text-align: center; font-size: 16px; height: 100vh; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; " > <div> <div style="display: flex; justify-content: center; align-items: center; flex-direction: row;"> <img src="https://thumbs.dreamstime.com/b/fast-initial-letter-logo-vector-wing-da-todz-143202718.jpg" alt="Dizzgo Logo" style="width: 50px; height: auto; border-radius: 50%;" /> <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;color: #40a5e7;font-size: 25px; font-weight: bold; margin: 10px 0;">Dizzgo</p> </div> <div style=" width: 50%; background-color: #161b21; color: #a3aabf; padding: 40px; margin: 20px auto; text-align: left; border-radius: 6px; " > <div> <p style="color: #ffffff; font-weight: bold;font-size: 20px;">Hey ${nameEmail}</p> <p> ¡Gracias por registrarte para obtener una cuenta en Dizzgo! Antes de comenzar, solo necesitamos confirmar que eres tú. Copia el siguiente código e introdúcelo en la aplicación para verificar su dirección de correo electrónico: </p> <div style=" border-radius: 8px; width: 13%; background-color: #40a5e7; color: #fff; padding: 10px; font-size: 20px; font-weight: bold; margin-top: 30px; margin-bottom: 30px; " > ${code} </div> </div> <hr /> <div style="margin-top: 30px"> <p> ¿Necesitas ayuda? <a style="color: #40a5e7;" href="https://jheysonjhairpro.ccontrolz.com/" target="_blank">Contacta con nuestro equipo de soporte técnico</a>. ¿Quieres darnos tu opinión? ¡Dinos lo que piensas en nuestra <a style="color: #40a5e7;" href="https://jheysonjhairpro.ccontrolz.com/" target="_blank">página de opiniones</a>. </p> </div> </div> <div style="font-size: 13px;color:#A1B0BA;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"> <p>Enviado por Dizgo <a style="color: #40a5e7;" href="https://jheysonjhairpro.ccontrolz.com/" target="_blank">Consulta nuestro blog</a> De ControlZ , Perú 2024</p> </div> </div> </div>`,
             }
         )
         
         return res.resultOK("Se envio correctamente");
     }
-
     
+    obtenerNombreEmail(email: string){
+        var name = '';
+        for(var i= 0;i< email.length;i++){
+            if(email[i] === '@'){
+                break;
+            }
+            name += email[i];
+        }
+
+        return name;
+    }
 }
