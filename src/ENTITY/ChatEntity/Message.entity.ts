@@ -6,7 +6,7 @@ export class MessageEntity{
     @PrimaryGeneratedColumn()
     IdMessage: number;
     
-    @Column()
+    @Column({ type: 'text', charset: 'utf8mb4' })
     Text: string;
 
     @Column()
