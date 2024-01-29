@@ -26,6 +26,7 @@ export class ProductSupplierService {
         
         var n = new ProductSupplierEntity();
 
+        n.PriceProduct = productSupplier.PriceProduct;
         n.Product = await this.productRepository.findOne({
             where: {IdProduct: productSupplier.IdProduct}
         })
