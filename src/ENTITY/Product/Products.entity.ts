@@ -19,7 +19,7 @@ export class ProductEntity {
     @PrimaryGeneratedColumn()
     IdProduct: number;
     
-    @Column({ unique: true })
+    @Column()
     Name: string;
     
     @Column()
