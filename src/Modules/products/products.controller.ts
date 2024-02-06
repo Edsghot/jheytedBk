@@ -11,14 +11,19 @@ export class ProductsController {
         return this.ProductService.getAllProduct();
     }
     
-    @Get(':productId') // Define la ruta completa, ej: /products/1
-    getById(@Param('productId') productId: number) { // Usa @Param('nombreDelParametro') para obtener el valor
-      return this.ProductService.getbyId(productId); // Llama al método en el servicio
+    @Get(':productId') 
+    getById(@Param('productId') productId: number) { 
+      return this.ProductService.getbyId(productId); 
     }
 
     @Get('BestSelling/:rating') 
     async getBestSelling(@Param('rating') rating: number) { 
       return await this.ProductService.getBestSelling(rating); 
+    }
+
+    @Get('BestRecommended/:rating')
+    async getBestRecommended(@Param('rating') rating: number){
+      return await this.ProductService.getBestRecommended(rating);
     }
 
     @Post('insert')

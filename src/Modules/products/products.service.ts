@@ -59,5 +59,29 @@ export class ProductsService {
         }
     }
     
+    async getBestRecommended(rating: number){
+        try{
+
+            const results = await this.productRepository.query(`CALL SP_ObtenerProductoRecomendaded(${rating})`);
+            
+            if (results && results.length > 0 && Array.isArray(results[0])) {
+                return {
+                    msg: "se encontraron estos productos",
+                    value: results[0]
+                };
+            } else {
+                return {
+                    msg: "no se encontraron los productos",
+                    value: results[0]
+                };
+            }
+            
+        }catch(e){
+            return {
+                msg: "Error al consumir el store procedure",
+                value: null
+            };
+        }
+    }
     
 }
