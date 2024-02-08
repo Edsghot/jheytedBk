@@ -1,11 +1,19 @@
 import { Entity , Column, PrimaryGeneratedColumn} from "typeorm"
 
+export enum typeDrinks{
+    Alcoholic  = 0,
+    Soda = 1,
+    Water = 2,
+    Energetic = 3
+}
+
 export enum TypeEnum {
     Wisky = 0,
     Rones = 1,
     Pisco = 2,
-    Gaseosa = 3,
-    Agua = 4
+    vino = 3,
+    vodka = 4,
+    otros = 999
 }
 
 export enum ContainerTypeEnum{
@@ -31,7 +39,7 @@ export class ProductEntity {
     @Column()
     Ml: string;
     
-    @Column()
+    @Column({type: 'double'})
     Score: number;
 
     @Column()
@@ -45,4 +53,7 @@ export class ProductEntity {
 
     @Column()
     ContainerType: ContainerTypeEnum;
+
+    @Column({nullable: true})
+    Category: typeDrinks;
 }

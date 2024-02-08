@@ -2,11 +2,6 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "t
 import { ProductEntity } from "../Product/Products.entity";
 import { SupplierEntity } from "../Supplier/Supplier.entity";
 
-export enum CategoryEnum{
-    normal = 0,
-    MasVendido = 1,
-    Recomendado = 2,
-}
 
 
 @Entity({ name: 'ProductSuppliers' })
@@ -35,15 +30,12 @@ export class ProductSupplierEntity {
     PromotionPrice: number;
 
     @Column()
-    Score: number;
+    Stock: number;
 
     @Column()
-    Stock: number;
+    ScorePublic: number;
     
     @Column()
     DateAdded: Date;
-
-    @Column({nullable: true})
-    Category: CategoryEnum;
 
 }

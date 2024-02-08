@@ -37,8 +37,6 @@ export class ProductSupplierService {
         n.ImgProduct = productSupplier.ImgProduct;
         n.IsPromotion = productSupplier.IsPromotion;
         n.PromotionPrice = productSupplier.PromotionPrice;
-        n.Score = 0;
-        n.Category = 0;
         n.Stock = productSupplier.Stock;
         n.DateAdded = new Date();
 

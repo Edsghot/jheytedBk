@@ -62,7 +62,7 @@ export class ProductsService {
     async getBestRecommended(rating: number){
         try{
 
-            const results = await this.productRepository.query(`CALL SP_ObtenerProductoRecomendaded(${rating})`);
+            const results = await this.productRepository.query(`CALL SP_ObtenerProductRecomendaded(${rating})`);
             
             if (results && results.length > 0 && Array.isArray(results[0])) {
                 return {
