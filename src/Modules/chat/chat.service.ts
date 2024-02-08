@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { createMessageDto } from 'src/DTOs/Chat/createMessage.dto';
 import { MessageEntity } from 'src/ENTITY/ChatEntity/Message.entity';
 import { UserEntity } from 'src/ENTITY/User/user.entity';
-import { Repository } from 'typeorm';
+import { LineString, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 
@@ -33,6 +33,35 @@ export class ChatService {
         })
 
         if(n.User === null || n.Text === null){
+            return {msg: "error al enviar el mensaje"}
+        }
+        n.createDate = new Date();
+
+        try{
+         const newMessage = this.messageRepository.create(n)
+         return {msg: "Se creo correctamente",
+         value: this.messageRepository.save(newMessage)}
+        }catch(e){
+             return {
+                 msg: "Error al enviar el mensaje: "+e,
+                 value: null,
+                 sucess: false
+             }
+        } 
+     }
+
+     async sendMessageImage(message: createMessageDto,url:string){
+        
+        var n = new MessageEntity();
+
+        n.Text = message.Text;
+        n.Image = url;
+
+        n.User = await this.userRepository.findOne({
+            where: {IdUser: message.IdUser}
+        })
+
+        if(n.User === null || n.Text === null || !url){
             return {msg: "error al enviar el mensaje"}
         }
         n.createDate = new Date();
