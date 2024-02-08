@@ -68,8 +68,9 @@ export class ChatService {
 
         try{
          const newMessage = this.messageRepository.create(n)
+         this.messageRepository.save(newMessage)
          return {msg: "Se creo correctamente",
-         value: this.messageRepository.save(newMessage)}
+         value: true}
         }catch(e){
              return {
                  msg: "Error al enviar el mensaje: "+e,
