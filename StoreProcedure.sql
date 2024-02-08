@@ -36,7 +36,7 @@ BEGIN
     FROM Products
     INNER JOIN ProductSuppliers ON Products.IdProduct = ProductSuppliers.IdProduct
     WHERE Products.ContainerType = p_container
-    ORDER BY ProductSuppliers.Score DESC
+    ORDER BY Products.Score DESC
     LIMIT p_limite;
 END //
 
@@ -52,12 +52,7 @@ BEGIN
     FROM Products
     INNER JOIN ProductSuppliers ON Products.IdProduct = ProductSuppliers.IdProduct
     WHERE Products.Type = p_type
-    ORDER BY ProductSuppliers.Score DESC
+    ORDER BY Products.Score DESC
     LIMIT p_limite;
 END //
-
-    PREPARE stmt FROM @consulta;
-    EXECUTE stmt;
-    DEALLOCATE PREPARE stmt;
-END;
 DELIMITER ;
