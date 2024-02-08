@@ -14,4 +14,9 @@ export class AuthValidateController {
         return  await this.authService.sendMail(email);
     }
 
+    @Get('/recoverPassword')
+     async sendMailRecoverPassword(@Query('email') email: string){
+        return  await this.authService.sendMailRecoverPassword(email);
+    }
+
 }
