@@ -29,13 +29,35 @@ DELIMITER ;
 -- para segun el containertype
 
 DELIMITER //
-CREATE PROCEDURE SP_ObtenerProductContainerType(IN p_limite INT,IN p_container INT) 
-begin
-    
-        SELECT * FROM Products 
-        INNER JOIN ProductSuppliers ON Products.IdProduct = ProductSuppliers.IdProduct 
-        WHERE ProductSuppliers.ContainerType = p_container
-        ORDER BY ProductSuppliers.Score DESC 
-        LIMIT p_limite;
-end// 
-DELIMITER;
+
+CREATE PROCEDURE SP_ObtenerProductContainerType(IN p_limite INT, IN p_container INT) 
+BEGIN
+    SELECT *
+    FROM Products
+    INNER JOIN ProductSuppliers ON Products.IdProduct = ProductSuppliers.IdProduct
+    WHERE Products.ContainerType = p_container
+    ORDER BY ProductSuppliers.Score DESC
+    LIMIT p_limite;
+END //
+
+DELIMITER ;
+
+-- para segun el type
+
+DELIMITER //
+
+CREATE PROCEDURE SP_ObtenerProductType(IN p_limite INT, IN p_type INT) 
+BEGIN
+    SELECT *
+    FROM Products
+    INNER JOIN ProductSuppliers ON Products.IdProduct = ProductSuppliers.IdProduct
+    WHERE Products.Type = p_type
+    ORDER BY ProductSuppliers.Score DESC
+    LIMIT p_limite;
+END //
+
+    PREPARE stmt FROM @consulta;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END;
+DELIMITER ;
