@@ -193,7 +193,7 @@ export class UserService {
 
   async recoverPassword(update: RecoverPasswordDto) {
     var n = await this.userRepository.findOne({
-      where: { IdUser: update.IdUser },
+      where: { Email: update.Email },
     });
 
     if (n === null) {

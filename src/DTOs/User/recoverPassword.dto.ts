@@ -1,4 +1,4 @@
 export class RecoverPasswordDto{
-    IdUser: number;
+    Email: string;
     Password: string;
 }
